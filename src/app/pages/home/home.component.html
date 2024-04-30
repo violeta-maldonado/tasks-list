@@ -1,0 +1,52 @@
+<header class="header">
+  <div class="container">
+    <h1>LISTA DE TAREAS</h1>
+    <!-- <button class="btn btn-success waves-effect waves-light" (click)="newTask()">Agregar</button> -->
+  </div>
+</header>
+<div class="container">
+  <div class="col-md-12 col-12 col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <div>
+          <table class="table table-striped">
+            <tbody><tr>
+              <th>Descripcion</th>
+              <th>Usuario</th>
+              <th></th>
+              <th>Fecha limite</th>
+              <th>Accion</th>
+              </tr>
+              <tr 
+                *ngFor="let task of tasksByFilter(); index as i"
+                >
+                <td>{{ task.description}}</td>
+                <td>{{ task.assignee.username}}</td>
+                <td>{{ task.status}} prioridad: {{ task.priority}}</td>
+                <td>{{ task.dateline}}</td>
+                <td>
+                  <!-- <button class="btn btn-success waves-effect waves-light">Editar</button> -->
+                  <button class="destroy" (click)="deleteTask(i)">Borrar</button>
+                </td>
+              </tr> 
+            </tbody>
+          </table>
+        </div>
+        <footer class="footer" >
+          <ul class="filters">
+            <li>
+              <a (click)="changeFilter('all')" [class.selected]="filter() === 'all'">All</a>
+            </li>
+            <li>
+              <a (click)="changeFilter('pending')" [class.selected]="filter() === 'pending'">Pending</a>
+            </li>
+            <li>
+              <a (click)="changeFilter('completed')" [class.selected]="filter() === 'completed'">Completed</a>
+            </li>
+          </ul>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>

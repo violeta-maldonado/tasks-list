@@ -1,0 +1,49 @@
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <h2>Crear una nueva tarea</h2>
+      <!-- Login Form -->
+      <form [formGroup]="taskForm" >
+        <input type="text" id="tescripcion" class="fadeIn second" placeholder="description" formControlName="description">
+        <div>prioridad
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" formControlName="priority">
+                  ----
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" >Baja</a>
+                  <a class="dropdown-item" >Media</a>
+                  <a class="dropdown-item" >Alta</a>
+                </div>
+              </div>
+            </div>
+        <div>estado
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" formControlName="status"></button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" >Pendiente</a>
+                  <a class="dropdown-item" >Completado</a>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username">Usuario a asignar:</label>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span id="selectedUser">Seleccionar usuario</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <div *ngFor="let user of filteredUsers">
+                    <a class="dropdown-item" >{{ user.username }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <div class="form-group">
+          <label for="taskDate">Fecha limite:</label>
+          <input type="date" class="form-control" id="taskDate" name="taskDate" placeholder="Select Date">
+        </div>
+        <input class="fadeIn fourth" value="Crear">
+      </form>
+    </div>
+  </div>
